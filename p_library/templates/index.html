@@ -1,5 +1,19 @@
-Добро пожаловать в {{ title }}.  <br>
-Тут собрано {{ books|length }} книг из моей личной коллекции.
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
+</head>
+
+<body>
+
+    <div class='custom'>
+        Добро пожаловать в {{ title }}.  <br>
+        Тут собрано {{ books|length }} книг из моей личной коллекции.
+    </div>
 
 <table border="1">
     {% for book in books %}
@@ -27,4 +41,7 @@
     </tr>
     {% endfor %}
 </table>
+</body>
+</html>
+
 

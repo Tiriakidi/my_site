@@ -13,7 +13,6 @@ from django.forms import formset_factory
 from django.http.response import HttpResponseRedirect
 
 
-
 # Create your views here.
 
 def books_list(request):
@@ -122,3 +121,4 @@ def books_authors_create_many(request):
 			'book_formset': book_formset,  
 		}  
 	)
+

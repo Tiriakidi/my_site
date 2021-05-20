@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from p_library import views
+
+from django.conf.urls.static import static
+from django.conf import settings
  
 urlpatterns = [  
     path('admin/', admin.site.urls),
@@ -24,5 +27,7 @@ urlpatterns = [
     path('index/book_increment/', views.book_increment),
     path('index/book_decrement/', views.book_decrement),
     path('publishers', views.publishers),
-    path('', include(('p_library.urls', 'p_library'), namespace='p_library'))
+    path('', include(('p_library.urls', 'p_library'), namespace='p_library')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

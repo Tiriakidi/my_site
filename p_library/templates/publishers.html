@@ -1,8 +1,8 @@
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
+{% extends 'base.html' %}
 
+{% block content %}
 {% for publisher in publishers %}
-    <ul class="list-group">
+    <ul class="list-group custom">
         <li class="list-group-item">
             {{ publisher.name }}
             <ul class="list-group">
@@ -13,3 +13,4 @@
         </li>
     </ul>
 {% endfor %}
+{% endblock %}

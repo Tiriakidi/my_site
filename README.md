@@ -1,4 +1,4 @@
-# moduleD4_homework
+
 Доступ в админ-панель: polina / qwerty
 
 #ЗАПУСК ПРОЕКТА MACOS
@@ -12,6 +12,9 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+
+```
 CSS через STATIC добавлены в base.html и publishers.html
 Шаблон base.html используется в publishers.html
 Добавлена возможность загружать картинки к книгам
+```

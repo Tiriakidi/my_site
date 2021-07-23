@@ -22,12 +22,13 @@ from django.conf import settings
  
 urlpatterns = [  
     path('admin/', admin.site.urls),
-    path('', views.books_list),
+    path('', views.first_page),
     path('index/', views.index),
     path('index/book_increment/', views.book_increment),
     path('index/book_decrement/', views.book_decrement),
     path('publishers', views.publishers),
     path('', include(('p_library.urls', 'p_library'), namespace='p_library')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

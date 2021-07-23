@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from p_library.models import Author, Book, Publisher
-from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect
 
@@ -13,21 +12,21 @@ from django.forms import formset_factory
 from django.http.response import HttpResponseRedirect
 
 
+
+  
 # Create your views here.
-
-def books_list(request):
-    books = Book.objects.all().values_list('title')
-    return HttpResponse(books)
-
+  
+def first_page(request):    
+    return render(request, 'base.html')
 
 def index(request):
-    template = loader.get_template('index.html')
     books = Book.objects.all()
     biblio_data = {
         "title": "мою библиотеку",
         "books": books,
     }
-    return HttpResponse(template.render(biblio_data, request))
+    return render(request, 'index.html', biblio_data)
+
 
 def book_increment(request):
     if request.method == 'POST':
@@ -70,7 +69,8 @@ def publishers(request):
     publish_data = {
         "publishers": publishers
     }
-    return HttpResponse(template.render(publish_data))
+    return render(request, 'publishers.html', publish_data)
+    
 
 
 class AuthorEdit(CreateView):  

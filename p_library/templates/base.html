@@ -16,8 +16,19 @@
         <h1>My personal library info</h1>
         <img class= "image" src='{% static "img/books.png" %}'>
     </div>
+
+    <div>
+        {% if user.username %}  
+        <h1>Привет, {{ user.username }}!</a>!</h1>  
+        <p>Тут ты можешь <a href="accounts/logout">выйти</a>.</p>  
+        {% else %}  
+        <p>Тебе нужно <a href="accounts/signup/">зарегистрироваться</a> или <a href="accounts/login/">войти на сайт</a>!</p> 
+        {% endif %}  
+    </div>
+    
     <div>
         {% block content %}
+            
         {% endblock %} 
     </div> 
 </body>

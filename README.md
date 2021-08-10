@@ -12,9 +12,8 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+```
+Добавлена регистрация пользователей через django Allauth
+```
 
-```
-CSS через STATIC добавлены в base.html и publishers.html
-Шаблон base.html используется в publishers.html
-Добавлена возможность загружать картинки к книгам
-```
+

@@ -1,6 +1,8 @@
 from django import forms  
-from p_library.models import Author, Book
+from p_library.models import Author, Book, UserProfile
 from django.forms import formset_factory
+
+
   
 class AuthorForm(forms.ModelForm):  
 
@@ -15,3 +17,9 @@ class BookForm(forms.ModelForm):
         model = Book  
         fields = '__all__'
 
+
+class ProfileCreationForm(forms.ModelForm):
+
+    class Meta:
+        model = UserProfile
+        fields = ['age', 'country']

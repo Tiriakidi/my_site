@@ -4,12 +4,14 @@ from django.template import loader
 from django.shortcuts import redirect
 
   
-from p_library.forms import AuthorForm, BookForm
+from p_library.forms import AuthorForm, BookForm, ProfileCreationForm
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 
 from django.forms import formset_factory  
 from django.http.response import HttpResponseRedirect
+
+from django.views.generic.edit import FormView
 
 
 
@@ -122,3 +124,19 @@ def books_authors_create_many(request):
 		}  
 	)
 
+class CreateUserProfile(FormView):
+    
+    form_class = ProfileCreationForm
+    template_name = 'profile.html'
+    success_url = reverse_lazy('first_page')
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_anonymous:
+            return HttpResponseRedirect(reverse_lazy('login'))
+        return super(CreateUserProfile, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.user = self.request.user
+        instance.save()
+        return super(CreateUserProfile, self).form_valid(form)

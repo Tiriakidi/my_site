@@ -19,16 +19,21 @@ from p_library import views
 
 from django.conf.urls.static import static
 from django.conf import settings
+from allauth.account.views import login, logout
+from p_library.views import CreateUserProfile
  
 urlpatterns = [  
     path('admin/', admin.site.urls),
-    path('', views.first_page),
-    path('index/', views.index),
+    path('', views.first_page, name='first_page'),
+    path('index/', views.index, name='index'),
     path('index/book_increment/', views.book_increment),
     path('index/book_decrement/', views.book_decrement),
     path('publishers', views.publishers),
     path('', include(('p_library.urls', 'p_library'), namespace='p_library')),
     path('accounts/', include('allauth.urls')),
+    path('login/', login, name='login'),  
+    path('logout/', logout, name='logout'),
+    path('profile/', CreateUserProfile.as_view(), name='profile-create')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
